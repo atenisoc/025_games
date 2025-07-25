@@ -1,7 +1,8 @@
 // src/app/scenarios/page.tsx
 import fs from 'fs';
 import path from 'path';
-import ScenarioCard from '@/components/ScenarioCard';
+import { ScenarioCard } from '@/components/ScenarioCard';
+
 
 interface Scenario {
   title: string;
@@ -12,16 +13,27 @@ interface Scenario {
 
 const rawScenarios = [
   {
-    title: '毒入りスープ',
-    summary: '「スープには“毒”がある？」\n暗い部屋に集められたあなたとスープ。\n時間内に逃げられるか！？',
-    file: 'poisoned_soup.txt',
+    title: 'コードネーム：GPT進行版',
+    summary: '言葉で推理する対戦型ゲーム。\nGPTが進行役を務め、1人でも遊べるコードネーム！',
+    file: 'codenames-session.txt',
+    image: '/images/codenames.jpg',
   },
   {
-    title: '死にたがり電車',
-    summary: '「この列車は、・・・。降りられない。」\n気づけば見知らぬ列車の中。\n不気味な乗客と謎を追い脱出を目指す。',
-    file: 'deathTrainPrompt.txt',
+    title: 'GPT人狼（※調整中）',
+    summary: '哲学・思考型NPCが登場する人狼ゲーム。',
+    file: 'gpt-jinro-session.txt',
+    image: '/images/jinro.jpg',
+  },
+  {
+    title: 'クトゥルフ神話TRPG',
+    summary: 'あなたは探索者。\nGPTがキーパーとなり、恐怖と謎の世界へ導きます。',
+    file: 'coc-session.txt',
+    image: '/images/coc.jpg',
+    href: 'https://gpt-coc-addon.vercel.app/scenarios', // ★外部リンクに変更
+    external: true,
   },
 ];
+
 
 
 
