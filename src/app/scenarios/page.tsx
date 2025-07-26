@@ -3,12 +3,15 @@ import fs from 'fs';
 import path from 'path';
 import { ScenarioCard } from '@/components/ScenarioCard';
 
-
-interface Scenario {
+export interface Scenario {
   title: string;
   summary: string;
-  file: string;
-  prompt: string;
+  image: string;
+  file?: string;
+  href?: string;
+  external?: boolean;
+  prompt?: string;         // ← 追加 & オプショナルに
+  englishPrompt?: string;  // ← 追加 & オプショナルに
 }
 
 const rawScenarios = [

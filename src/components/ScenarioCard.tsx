@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 interface ScenarioCardProps {
   title: string;
   summary: string;
-  prompt: string;
+  prompt?: string;              // ← ✅ optional にする
   englishPrompt?: string;
   href?: string;
   external?: boolean;
@@ -41,15 +41,16 @@ export function ScenarioCard({
     document.body.removeChild(textarea);
   };
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(prompt);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      fallbackCopy(prompt);
-    }
-  };
+const handleCopy = async () => {
+  if (!prompt) return; // prompt が undefined/null の場合は何もしない
+  try {
+    await navigator.clipboard.writeText(prompt);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  } catch {
+    fallbackCopy(prompt);
+  }
+};
 
   const handleCopyEn = async () => {
     try {
