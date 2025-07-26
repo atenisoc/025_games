@@ -8,9 +8,17 @@ interface ScenarioCardProps {
   prompt: string;
   href?: string;
   external?: boolean;
+  image?: string;
 }
 
-export function ScenarioCard({ title, summary, prompt, href, external }: ScenarioCardProps) {
+export function ScenarioCard({
+  title,
+  summary,
+  prompt,
+  href,
+  external,
+  image,
+}: ScenarioCardProps) {
   const [copied, setCopied] = useState(false);
 
   const fallbackCopy = (text: string) => {
@@ -48,32 +56,41 @@ export function ScenarioCard({ title, summary, prompt, href, external }: Scenari
   };
 
   return (
-    <div className="w-full max-w-xl bg-gray rounded-lg shadow hover:shadow-md transition p-5 space-y-3 border">
-      <div className="flex items-start justify-between gap-4">
-        {external ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700 whitespace-nowrap"
-          >
-            🌐 外部リンク
-          </a>
-        ) : (
-          <button
-            onClick={handleCopy}
-            className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 whitespace-nowrap"
-          >
-            {copied ? '✅ コピー済' : '📋 コピー'}
-          </button>
-        )}
-        <div className="text-left w-full">
-          <h3 className="text-2xl font-bold text-red-500 font-serif tracking-wide leading-snug">
+    <div className="w-full bg-gray-900/60 text-white rounded-lg shadow-lg flex flex-col md:flex-row overflow-hidden border border-white/40">
+      {image && (
+        <div className="md:w-1/3 w-full h-40 md:h-auto">
+          <img
+            src={image}
+            alt={title}
+            className="object-cover w-full h-full"
+          />
+        </div>
+      )}
+      <div className="flex-1 p-4 flex flex-col justify-between">
+        <div>
+          <h3 className="text-xl font-bold text-red-400 mb-1 font-serif">
             {title}
           </h3>
-          <p className="text-base text-white-700 leading-relaxed tracking-wide mt-1 whitespace-pre-line">
-            {summary}
-          </p>
+          <p className="text-sm whitespace-pre-line">{summary}</p>
+        </div>
+        <div className="mt-4">
+          {external ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700"
+            >
+              🌐 外部リンク
+            </a>
+          ) : (
+            <button
+              onClick={handleCopy}
+              className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700"
+            >
+              {copied ? '✅ コピー済' : '📋 コピー'}
+            </button>
+          )}
         </div>
       </div>
     </div>
