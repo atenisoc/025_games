@@ -64,16 +64,16 @@ export function ScenarioCard({
   };
 
   return (
-    <div className="w-full bg-gray-900/60 text-white rounded-lg shadow-lg flex flex-row overflow-hidden border border-white/40">
-{image && (
-  <div className="w-1/4 min-w-[80px] max-w-[120px]">
-    <img
-      src={image}
-      alt={title}
-      className="object-cover w-full h-full"
-    />
-  </div>
-)}
+    <div className="w-full bg-gray-900/60 text-white rounded-lg shadow-lg flex flex-col md:flex-row overflow-hidden border border-white/40">
+      {image && (
+        <div className="md:w-1/3 w-full h-40 md:h-auto">
+          <img
+            src={image}
+            alt={title}
+            className="object-cover w-full h-full"
+          />
+        </div>
+      )}
       <div className="flex-1 p-4 flex flex-col justify-between">
         <div>
           <h3 className="text-xl font-bold text-red-400 mb-1 font-serif">{title}</h3>

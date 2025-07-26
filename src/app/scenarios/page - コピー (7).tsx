@@ -105,10 +105,14 @@ return (
     <li>
       ※１．チャット欄が表示されない場合、<br />
       　　 中央の「今すぐ始める」をクリック
+      <br />
+      <span className="text-white/60">※ If no input appears, click “Start Chatting” in the center.</span>
     </li>
     <li>
       ※２．GPT-4o（有料版）推奨。<br />
       　　 より没入感ある体験に
+      <br />
+      <span className="text-white/60">※ GPT-4o (pro version) is recommended for better immersion.</span>
     </li>
   </ul>
 </section>
