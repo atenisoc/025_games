@@ -14,19 +14,19 @@ interface Scenario {
 const rawScenarios = [
   {
     title: 'コードネーム：GPT進行版',
-    summary: '言葉で推理する対戦型ゲーム。\nGPTが進行役を務め、1人でも遊べるコードネーム！',
+    summary: '言葉で推理する対戦型スパイゲーム。GPTが進行役を務め、1人でも本格プレイが可能！',
     file: 'codenames-session.txt',
     image: '/images/codenames.jpg',
   },
   {
     title: 'GPT人狼（※調整中）',
-    summary: '哲学・思考型NPCが登場する人狼ゲーム。',
+    summary: '哲学・推論を行うNPCと対話する思考型人狼ゲーム。',
     file: 'gpt-jinro-session.txt',
     image: '/images/jinro.jpg',
   },
   {
     title: 'クトゥルフ神話TRPG',
-    summary: 'あなたは探索者。\nGPTがキーパーとなり、恐怖と謎の世界へ導きます。',
+    summary: 'あなたは探索者。GPTがキーパーとして、恐怖と謎に満ちた物語を紡ぎます。',
     file: 'coc-session.txt',
     image: '/images/coc.jpg',
     href: 'https://gpt-coc-addon.vercel.app/scenarios', // ★外部リンクに変更
@@ -63,7 +63,7 @@ export default function ScenarioListPage() {
 
 
 <h1 className="text-3xl font-serif font-bold text-center text-gray-00 tracking-wide mb-6">
-  【クトゥルフ神話TRPG】
+  【GPT対話型ゲーム】
 </h1>
 
     {/* 📋 利用手順 */}
@@ -71,7 +71,7 @@ export default function ScenarioListPage() {
       <h3 className="text-2xl text-white font-bold mb-2">📋 利用手順</h3>
       <ol className="list-decimal pl-6 space-y-1  text-white">
         <li>
-          気になるシナリオのボタンを押して、 <span className="font-semibold text-green-500">「テキストをコピー」</span> してください。
+          気になるゲームのボタンを押して、 <span className="font-semibold text-green-500">「テキストをコピー」</span> してください。
         </li>
         <li>
   <a
