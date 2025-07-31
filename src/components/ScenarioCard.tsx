@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 interface ScenarioCardProps {
   title: string;
   summary: string;
-  prompt?: string;              // ← ✅ optional にする
+  prompt?: string;
   englishPrompt?: string;
-  href?: string;
+  href?: string;         // 日本語リンク
+  hrefEn?: string;       // ✅ 英語リンクを追加
   external?: boolean;
   image?: string;
 }
@@ -18,6 +19,7 @@ export function ScenarioCard({
   prompt,
   englishPrompt,
   href,
+  hrefEn,                // ✅ 追加
   external,
   image,
 }: ScenarioCardProps) {
@@ -41,16 +43,16 @@ export function ScenarioCard({
     document.body.removeChild(textarea);
   };
 
-const handleCopy = async () => {
-  if (!prompt) return; // prompt が undefined/null の場合は何もしない
-  try {
-    await navigator.clipboard.writeText(prompt);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  } catch {
-    fallbackCopy(prompt);
-  }
-};
+  const handleCopy = async () => {
+    if (!prompt) return;
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      fallbackCopy(prompt);
+    }
+  };
 
   const handleCopyEn = async () => {
     try {
@@ -66,30 +68,44 @@ const handleCopy = async () => {
 
   return (
     <div className="w-full bg-gray-900/60 text-white rounded-lg shadow-lg flex flex-row overflow-hidden border border-white/40">
-{image && (
-  <div className="w-1/4 min-w-[80px] max-w-[120px]">
-    <img
-      src={image}
-      alt={title}
-      className="object-cover w-full h-full"
-    />
-  </div>
-)}
+      {image && (
+        <div className="w-1/4 min-w-[80px] max-w-[120px]">
+          <img
+            src={image}
+            alt={title}
+            className="object-cover w-full h-full"
+          />
+        </div>
+      )}
       <div className="flex-1 p-4 flex flex-col justify-between">
         <div>
           <h3 className="text-xl font-bold text-red-400 mb-1 font-serif">{title}</h3>
           <p className="text-sm whitespace-pre-line">{summary}</p>
         </div>
-        <div className="mt-4 flex gap-2">
+        <div className="mt-4 flex gap-2 flex-wrap">
           {external ? (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700"
-            >
-              🌐 外部リンク
-            </a>
+            <>
+              {href && (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  🌐 外部リンク（日本語）
+                </a>
+              )}
+              {hrefEn && (
+                <a
+                  href={hrefEn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700"
+                >
+                  🌐 English Version
+                </a>
+              )}
+            </>
           ) : (
             <>
               <button

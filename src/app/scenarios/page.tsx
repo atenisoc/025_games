@@ -16,6 +16,21 @@ export interface Scenario {
 
 const rawScenarios = [
 {
+  title: 'クトゥルフ神話TRPG',
+  summary: 'あなたは探索者。GPTがキーパーとして、恐怖と謎に満ちた物語を紡ぎます。',
+  image: '/images/coc.jpg',
+  href: 'https://gpt-coc-addon.vercel.app/scenarios',        // 日本語版
+  hrefEn: 'https://gpt-coc-addon.vercel.app/scenarios_en',  // ✅ 英語版
+  external: true,
+},
+{
+  title: 'ウミガメのスープ（Lateral Thinking Puzzle）',
+  summary: 'Yes/No質問で真相に迫る水平思考ゲーム。GPTが出題者となり、あなたが探偵役に！',
+  file: 'umigame-session.txt',
+  englishPrompt: 'umigame-session_en.txt',
+  image: '/images/umigame.jpg',
+},
+{
   title: 'コードネーム (Code Name)',
   summary: '言葉で推理する対戦型スパイゲーム。GPTが進行役を務め、1人でも本格プレイが可能！',
   file: 'codenames-session.txt',
@@ -29,13 +44,7 @@ const rawScenarios = [
     image: '/images/jinro.jpg',
     englishPrompt: 'Jinro game prompt in English',
   },
-  {
-    title: 'クトゥルフ神話TRPG',
-    summary: 'あなたは探索者。GPTがキーパーとして、恐怖と謎に満ちた物語を紡ぎます。',
-    image: '/images/coc.jpg',
-    href: 'https://gpt-coc-addon.vercel.app/scenarios',
-    external: true,
-  },
+
 ];
 
 
